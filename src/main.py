@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Depends
-from src.auth.base_config import auth_backend, fastapi_users
-from src.auth.schemas import UserRead, UserCreate
-from src.auth.models import User
-
+from fastapi import FastAPI
+from controller.auth.base_config import auth_backend, fastapi_users
+from src.schemas.auth.schemas import UserRead, UserCreate
+from controller.group.router import router as router_group
+from controller.posting.router import router as router_posting
 
 app = FastAPI()
 
@@ -19,15 +19,8 @@ app.include_router(
     tags=["auth"],
 )
 
-current_user = fastapi_users.current_user()
+app.include_router(router_group)
 
+app.include_router(router_posting)
 
-@app.get("/protected-route")
-def protected_route(user: User = Depends(current_user)):
-    return f"Hello, {user.username}"
-
-
-@app.get("/unprotected-route")
-def unprotected_route():
-    return f"Hello, stranger"
 
