@@ -11,18 +11,10 @@ router = APIRouter(
 
 @router.get("/") #show all groups for user
 async def get_user_groups(user_id: int, session: AsyncSession = Depends(get_async_session)):
-    try:
-
-    except Exception:
-        return
-
-
-@router.get("/{group_id}")
-async def get_group_by_id(group_id: int, session: AsyncSession = Depends(get_async_session)):
     return
 
 
-@router.post("/join") #add user to a group
+@router.post("/join_group") #add user to a group
 async def add_user_to_group(group_id: int, user_id: int, session: AsyncSession = Depends(get_async_session)):
     return
 

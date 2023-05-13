@@ -17,6 +17,7 @@ posts = Table(
     Column("post_name", String, nullable=False),
     Column("date", DATE, default=date.today),
     Column("text", Text),
+    extend_existing=True
 )
 
 
@@ -25,5 +26,6 @@ images = Table(
     metadata,
     Column("id", Integer, primary_key=True),
     Column("post_id", Integer, ForeignKey(posts.c.id)),
-
+    Column("path", String, nullable=False),
+    extend_existing=True
 )

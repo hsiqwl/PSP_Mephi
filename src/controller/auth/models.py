@@ -16,10 +16,11 @@ users = Table(
     Column("is_active", Boolean, default=True, nullable=False),
     Column("is_superuser", Boolean, default=False, nullable=False),
     Column("is_verified", Boolean, default=False, nullable=False),
+    extend_existing=True
 )
 
 
-class User(SQLAlchemyBaseUserTable[int], Base):
+class Users(SQLAlchemyBaseUserTable[int], Base):
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True
     )

@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from controller.auth.base_config import auth_backend, fastapi_users
+from src.controller.auth.base_config import auth_backend, fastapi_users
 from src.schemas.auth.schemas import UserRead, UserCreate
-from controller.group.router import router as router_group
-from controller.posting.router import router as router_posting
+from src.controller.group.router import router as router_group
+from src.controller.posting.router import router as router_posting
 
 app = FastAPI()
 
