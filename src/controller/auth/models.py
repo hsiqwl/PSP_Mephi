@@ -20,7 +20,9 @@ users = Table(
 )
 
 
-class Users(SQLAlchemyBaseUserTable[int], Base):
+class User(SQLAlchemyBaseUserTable[int], Base):
+    __tablename__ = "User"
+
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True
     )
@@ -41,6 +43,7 @@ class Users(SQLAlchemyBaseUserTable[int], Base):
     is_verified: Mapped[bool] = mapped_column(
         Boolean, default=False, nullable=False
     )
+    extend_existing = True
 
 
 
